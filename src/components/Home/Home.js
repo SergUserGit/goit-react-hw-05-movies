@@ -1,3 +1,6 @@
+import { Routes, Route, NavLink } from 'react-router-dom';
+//import MovieDetails from 'components/MovieDetails/MovieDetails';
+
 const Home = () => {
   return (
     <section>

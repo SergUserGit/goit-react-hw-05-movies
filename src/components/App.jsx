@@ -1,5 +1,6 @@
 import Home from './Home/Home';
-import { Routes, Route } from 'react-router-dom';
+import Movies from './Movies/Movies';
+import { Routes, Route, NavLink } from 'react-router-dom';
 
 export const App = () => {
   return (
@@ -13,8 +14,15 @@ export const App = () => {
         color: '#010101',
       }}
     >
+      <nav>
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+        <NavLink to="/movies">Movies</NavLink>
+      </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/movies" element={<Movies />} />
       </Routes>
     </div>
   );
