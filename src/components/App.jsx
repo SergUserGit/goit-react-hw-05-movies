@@ -9,38 +9,38 @@ const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
-  const onClickLink = el => {
-    if (el.target.id === 'linkHome') {
-      const elMovie = document.querySelector('#linkMovie');
-      if (!el.target.classList.contains(css.link__color)) {
-        el.target.classList.add(css.link__color);
-      }
-      if (el.target.classList.contains(css.link__colorblack)) {
-        el.target.classList.remove(css.link__color);
-      }
-      if (elMovie.classList.contains(css.link__color)) {
-        elMovie.classList.remove(css.link__color);
-      }
-      if (!elMovie.classList.contains(css.link__colorblack)) {
-        elMovie.classList.add(css.link__colorblack);
-      }
-    } else {
-      const elHome = document.querySelector('#linkHome');
+  // const onClickLink = el => {
+  //  if (el.target.id === 'linkHome') {
+  //   const elMovie = document.querySelector('#linkMovie');
+  //   if (!el.target.classList.contains(css.link__color)) {
+  //     el.target.classList.add(css.link__color);
+  //   }
+  //   if (el.target.classList.contains(css.link__colorblack)) {
+  //     el.target.classList.remove(css.link__color);
+  //   }
+  //   if (elMovie.classList.contains(css.link__color)) {
+  //     elMovie.classList.remove(css.link__color);
+  //   }
+  //   if (!elMovie.classList.contains(css.link__colorblack)) {
+  //     elMovie.classList.add(css.link__colorblack);
+  //   }
+  //  } else {
+  //   const elHome = document.querySelector('#linkHome');
 
-      if (!el.target.classList.contains(css.link__color)) {
-        el.target.classList.add(css.link__color);
-      }
-      if (el.target.classList.contains(css.link__colorblack)) {
-        el.target.classList.remove(css.link__colorblack);
-      }
-      if (elHome.classList.contains(css.link__color)) {
-        elHome.classList.remove(css.link__color);
-      }
-      if (!elHome.classList.contains(css.link__colorblack)) {
-        elHome.classList.add(css.link__colorblack);
-      }
-    }
-  };
+  //   if (!el.target.classList.contains(css.link__color)) {
+  //     el.target.classList.add(css.link__color);
+  //   }
+  //   if (el.target.classList.contains(css.link__colorblack)) {
+  //     el.target.classList.remove(css.link__colorblack);
+  //   }
+  //   if (elHome.classList.contains(css.link__color)) {
+  //     elHome.classList.remove(css.link__color);
+  //   }
+  //   if (!elHome.classList.contains(css.link__colorblack)) {
+  //     elHome.classList.add(css.link__colorblack);
+  //  }
+  //  }
+  //};
 
   //numberPage === 1 ? css.link + ' ' + css.link__color : css.link + ' ' + css.link__colorblack;
 
