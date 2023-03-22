@@ -1,8 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import imgUrl from '../../img/noimage.png';
 
 const MovieDetails = () => {
+  const navigate = useNavigate();
   const [detailArray, setDetailArray] = useState({});
   const [genres, setGenres] = useState([]);
   const { movieId } = useParams();
@@ -25,15 +29,30 @@ const MovieDetails = () => {
       .finally(() => {});
   }, [movieId]);
 
+  const onGoBackClick = () => {
+    navigate('/');
+  };
   return (
     <>
+      <button type="button" onClick={onGoBackClick}>
+        Go back
+      </button>
       <h2>{detailArray.title}</h2>
       <p>User Score {Math.ceil(detailArray.vote_average)}%</p>
       <h3>Overview</h3>
       <p>{detailArray.overview}</p>
       <h3>Genres</h3>
       <p>{genres.map(el => el.name).join(' ')}</p>
-      <img src={''} alt={detailArray.title} width={150} height={150} />
+      <img
+        src={
+          detailArray.poster_path !== null
+            ? `https://image.tmdb.org/t/p/w500${detailArray.poster_path}`
+            : imgUrl
+        }
+        alt={detailArray.title}
+        width={150}
+        height={150}
+      />
       <p>Additional information</p>
       <ul>
         <li>
@@ -49,8 +68,3 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
-// <img src={src} alt={alt} /> <p>{userScore}</p>
-//     <h3>Overview</h3>
-//    <p>{Overview}</p>
-//    <h3>Genres</h3>
-//    <p>{Genres}</p>

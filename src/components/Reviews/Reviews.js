@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
-  //results
-  //content
 
   useEffect(() => {
     fetch(
@@ -34,4 +32,3 @@ const Reviews = () => {
 };
 
 export default Reviews;
-//We don't have any reviews for this move

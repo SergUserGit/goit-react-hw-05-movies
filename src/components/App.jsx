@@ -1,22 +1,22 @@
-import Home from './Home/Home';
-import Movies from './Movies/Movies';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
 import { Routes, Route, NavLink } from 'react-router-dom';
-
-import MovieDetails from './MovieDetails/MovieDetails';
+import { lazy, Suspense } from 'react';
+const Home = lazy(() => import('./Home/Home'));
+const Movies = lazy(() => import('./Movies/Movies'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
     <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
+    //  style={{
+    //    height: '100vh',
+    //     display: 'flex',
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //    fontSize: 40,
+    //    color: '#010101',
+    //  }}
     >
       <nav>
         <NavLink to="/" end>
@@ -24,14 +24,17 @@ export const App = () => {
         </NavLink>
         <NavLink to="/movies">Movies</NavLink>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="movies" element={<Movies />}></Route>
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="movies" element={<Movies />}></Route>
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };
