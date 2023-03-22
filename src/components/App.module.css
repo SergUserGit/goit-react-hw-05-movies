@@ -1,0 +1,22 @@
+.navLink {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link__color {
+  color: #ff6347;
+}
+
+.link__colorblack {
+  color: #000000;
+}

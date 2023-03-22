@@ -45,13 +45,13 @@ const MovieDetails = () => {
       <p>{genres.map(el => el.name).join(' ')}</p>
       <img
         src={
-          detailArray.poster_path !== null
+          detailArray.poster_path !== undefined
             ? `https://image.tmdb.org/t/p/w500${detailArray.poster_path}`
             : imgUrl
         }
         alt={detailArray.title}
-        width={150}
-        height={150}
+        width={240}
+        height={400}
       />
       <p>Additional information</p>
       <ul>
