@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import css from './Home.module.css';
+import { getQueryString, getResponse } from '../../js/moduleapi';
 
 const Home = () => {
   const [rendArray, setRendArray] = useState([]);
