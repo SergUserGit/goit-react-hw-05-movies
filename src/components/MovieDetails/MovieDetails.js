@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import imgUrl from '../../img/noimage.png';
 import css from './MovieDetails.module.css';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { getQueryString, getResponse } from '../../js/moduleapi';
+import { getQueryString, getResponse, imgUrlPart } from '../../js/moduleapi';
 
 const MovieDetails = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const MovieDetails = () => {
         <img
           src={
             detailArray.poster_path
-              ? `https://image.tmdb.org/t/p/w500${detailArray.poster_path}`
+              ? `${imgUrlPart}${detailArray.poster_path}`
               : imgUrl
           }
           alt={detailArray.title}

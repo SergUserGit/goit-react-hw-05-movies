@@ -1,6 +1,6 @@
 const API_KEY = '8bdb4b862ffa773481adb9dc6c5538df';
-
 const firstPartQuery = 'https://api.themoviedb.org/3/';
+const imgUrlPart = 'https://image.tmdb.org/t/p/w500';
 
 function getQueryString(partBeforeApi, partAfterApi) {
   return firstPartQuery + partBeforeApi + '?api_key=' + API_KEY + partAfterApi;
@@ -15,4 +15,4 @@ function getResponse(url) {
   });
 }
 
-export { getQueryString, getResponse };
+export { getQueryString, getResponse, imgUrlPart };

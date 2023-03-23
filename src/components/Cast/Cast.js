@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import imgUrl from '../../img/noimage.png';
-import { getQueryString, getResponse } from '../../js/moduleapi';
+import { getQueryString, getResponse, imgUrlPart } from '../../js/moduleapi';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -23,11 +23,7 @@ const Cast = () => {
       {casts.map(({ name, id, character, profile_path }) => (
         <li key={id}>
           <img
-            src={
-              profile_path
-                ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                : imgUrl
-            }
+            src={profile_path ? `${imgUrlPart}${profile_path}` : imgUrl}
             alt={'actor'}
             width={100}
             height={150}
