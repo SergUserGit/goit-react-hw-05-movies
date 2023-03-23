@@ -1,12 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link, Outlet, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import imgUrl from '../../img/noimage.png';
-
 import css from './MovieDetails.module.css';
-
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { getQueryString, getResponse } from '../../js/moduleapi';
 
 const MovieDetails = () => {
   const navigate = useNavigate();
@@ -15,21 +12,15 @@ const MovieDetails = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=8bdb4b862ffa773481adb9dc6c5538df`
-    )
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('Немає даних по запиту'));
-      })
+    const url = getQueryString(`movie/${movieId}`, '');
+    const response = getResponse(url);
+    response
       .then(data => {
         setDetailArray({ ...data });
         setGenres([...data.genres]);
       })
       .catch(error => {})
-      .finally(() => {});
+      .finally(() => {}); //
   }, [movieId]);
 
   const onGoBackClick = () => {

@@ -7,15 +7,9 @@ const Home = () => {
   const [rendArray, setRendArray] = useState([]);
 
   useEffect(() => {
-    fetch(
-      'https://api.themoviedb.org/3/trending/movie/day?api_key=8bdb4b862ffa773481adb9dc6c5538df'
-    )
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('Немає даних по запиту'));
-      })
+    const url = getQueryString('trending/movie/day', '');
+    const response = getResponse(url);
+    response
       .then(data => {
         setRendArray([...data.results]);
       })
@@ -40,5 +34,3 @@ const Home = () => {
 };
 
 export default Home;
-
-//    <Outlet />

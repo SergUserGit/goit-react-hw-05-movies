@@ -1,20 +1,18 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { getQueryString, getResponse } from '../../js/moduleapi';
 
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=8bdb4b862ffa773481adb9dc6c5538df&language=en-US&page=1`
-    )
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('Немає даних по запиту'));
-      })
+    const url = getQueryString(
+      `movie/${movieId}/reviews`,
+      '&language=en-US&page=1'
+    );
+    const response = getResponse(url);
+    response
       .then(data => {
         setReviews([...data.results]);
       })

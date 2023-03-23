@@ -1,22 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
 import imgUrl from '../../img/noimage.png';
+import { getQueryString, getResponse } from '../../js/moduleapi';
 
 const Cast = () => {
   const { movieId } = useParams();
   const [casts, setCasts] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=8bdb4b862ffa773481adb9dc6c5538df&language=en-US`
-    )
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('Немає даних по запиту'));
-      })
+    const url = getQueryString(`movie/${movieId}/credits`, '&language=en-US');
+    const response = getResponse(url);
+    response
       .then(data => {
         setCasts([...data.cast]);
       })

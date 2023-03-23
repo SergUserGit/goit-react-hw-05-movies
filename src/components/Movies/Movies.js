@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import css from './Movies.module.css';
+import { getQueryString, getResponse } from '../../js/moduleapi';
 
 const Movies = () => {
   const [findText, setFindText] = useState('');
@@ -8,21 +9,18 @@ const Movies = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=8bdb4b862ffa773481adb9dc6c5538df&language=en-US&page=1&include_adult=false&query=${findText}`
-    )
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(new Error('Немає даних по запиту'));
-      })
+
+    const url = getQueryString(
+      'search/movie',
+      `&language=en-US&page=1&include_adult=false&query=${findText}`
+    );
+    const response = getResponse(url);
+
+    response
       .then(data => {
         setRendArray([...data.results]);
       })
-      .catch(error => {
-        console.log('Ошибка');
-      })
+      .catch(error => {})
       .finally(() => {});
   };
 
