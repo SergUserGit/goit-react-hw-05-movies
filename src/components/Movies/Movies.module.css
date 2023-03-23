@@ -1,0 +1,16 @@
+.findForm {
+  margin-top: 15px;
+}
+
+.findInput {
+  min-width: 300px;
+  margin-right: 5px;
+}
+
+.movieItem {
+  margin-bottom: 5px;
+}
+
+.movieItem:last-child {
+  margin-bottom: 0;
+}

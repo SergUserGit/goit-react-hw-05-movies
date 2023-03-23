@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import css from './Home.module.css';
 
 const Home = () => {
   const [rendArray, setRendArray] = useState([]);
@@ -27,7 +28,7 @@ const Home = () => {
       {rendArray && (
         <ul>
           {rendArray.map(({ title, id }) => (
-            <li key={id}>
+            <li key={id} className={css.movieItem}>
               <Link to={`/movies/${id}`}>{title}</Link>
             </li>
           ))}

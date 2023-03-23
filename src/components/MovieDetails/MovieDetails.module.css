@@ -1,0 +1,19 @@
+.infoMovieGroup {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 8px;
+}
+
+.infoGroup {
+  margin-top: 5px;
+}
+
+.buttonBack {
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.additionalBlock {
+  border-bottom: 2px solid #DCDCDC;
+  border-top: 2px solid #DCDCDC;
+}

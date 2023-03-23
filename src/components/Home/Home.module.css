@@ -1,0 +1,7 @@
+.movieItem {
+  margin-bottom: 5px;
+}
+
+.movieItem:last-child {
+  margin-bottom: 0;
+}

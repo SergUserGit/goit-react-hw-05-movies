@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [findText, setFindText] = useState('');
@@ -32,8 +33,9 @@ const Movies = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={css.findForm}>
         <input
+          className={css.findInput}
           type="text"
           value={findText}
           name="find"
@@ -47,7 +49,7 @@ const Movies = () => {
       {rendArray && (
         <ul>
           {rendArray.map(({ title, id }) => (
-            <li key={id}>
+            <li key={id} className={css.movieItem}>
               <Link to={`/movies/${id}`}>{title}</Link>
             </li>
           ))}
